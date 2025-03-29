@@ -3,6 +3,7 @@ import GithubIcon from "../Icons/GithubIcon";
 import LinkedinIcon from "../Icons/LinkedinIcon";
 import InstagramIcon from "../Icons/InstagramIcon";
 import YoutubeIcon from "../Icons/YoutubeIcon";
+import LINKS from "../../constants/Links";
 const ClickableIcon = (props) => {
   return (
     <a href={props.href} className="" target={"_blank"} rel="noreferrer">
@@ -15,13 +16,13 @@ const ClickableIcon = (props) => {
   );
 };
 const IconsData = [
-  { href: "https://github.com/biswo907", Icon: GithubIcon },
+  { href: LINKS?.GITHUB, Icon: GithubIcon },
   {
-    href: "https://www.linkedin.com/in/biswajit-dash-129977221/",
-    Icon: LinkedinIcon,
+    href: LINKS?.LINKEDIN,
+    Icon: LinkedinIcon
   },
-  { href: "https://www.instagram.com", Icon: InstagramIcon },
-  { href: "https://www.youtube.com", Icon: YoutubeIcon },
+  { href: LINKS?.INSTAGRAM, Icon: InstagramIcon },
+  { href: LINKS?.YOUTUBE, Icon: YoutubeIcon }
 ];
 
 export default function Fotter(props: {
