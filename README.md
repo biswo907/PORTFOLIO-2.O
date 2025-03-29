@@ -4,13 +4,13 @@
 
 ## 🔗 Live Demo
 
-🌐 [Visit My Portfolio](https://portfolio-biswo.netlify.app/)
+🌐 [Visit My Portfolio](https://portfolio-biswo-2o.vercel.app/)
 
 ---
 
 ## 📸 Preview
 
-![Portfolio Preview](https://portfolio-biswo.netlify.app/preview-image.png)
+![Portfolio Preview](https://portfolio-biswo-2o.vercel.app/preview-image.png)
 
 ---
 
