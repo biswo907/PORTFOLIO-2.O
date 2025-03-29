@@ -1,10 +1,5 @@
 # 🚀 Biswajit Dash - Portfolio
 
-![GitHub Repo stars](https://img.shields.io/github/stars/biswajitdash/portfolio?style=social)
-![GitHub forks](https://img.shields.io/github/forks/biswajitdash/portfolio?style=social)
-![GitHub last commit](https://img.shields.io/github/last-commit/biswajitdash/portfolio)
-![GitHub license](https://img.shields.io/github/license/biswajitdash/portfolio)
-
 🎨 **A modern and responsive portfolio website** showcasing my projects, skills, and experience as a **Full Stack Developer**.
 
 ## 🔗 Live Demo
