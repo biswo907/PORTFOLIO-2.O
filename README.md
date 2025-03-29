@@ -16,7 +16,7 @@
 
 ## 🛠️ Built With
 
-- ⚛ **React.js** – Frontend framework
+- ⚛ **Next.js** – Frontend framework
 - 🎨 **Tailwind CSS** – Styling
 - 🌐 **Vercel** – Hosting
 - 🚀 **Framer Motion** – Animations
