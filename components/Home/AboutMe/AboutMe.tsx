@@ -95,6 +95,19 @@ const AboutMe = forwardRef<HTMLDivElement>((props, ref) => {
           </div>
 
           {/* Image Section */}
+          {/* <div className="group relative lg:w-96 lg:h-96 md:w-72 md:h-72 md:block hidden">
+            <div className="group-hover:translate-x-3 group-hover:translate-y-3 duration-300 absolute w-5/6 h-5/6 border-2 border-AAsecondary translate-x-5 translate-y-5 rounded"></div>
+            <div className="absolute w-5/6 h-5/6 rounded overflow-hidden">
+              <div className="absolute w-full h-full group-hover:opacity-0 bg-AAsecondary opacity-10 duration-300 rounded overflow-hidden"></div>
+              <Img
+                src="/img/Portfolio-portrait-3Copy.jpg"
+                className="object-contain rounded-lg"
+                alt="Biswajit Dash Portfolio Image"
+              />
+            </div>
+          </div> */}
+
+          {/* Image Section for larger screens (Tablet & Desktop) */}
           <div className="group relative lg:w-96 lg:h-96 md:w-72 md:h-72 md:block hidden">
             <div className="group-hover:translate-x-3 group-hover:translate-y-3 duration-300 absolute w-5/6 h-5/6 border-2 border-AAsecondary translate-x-5 translate-y-5 rounded"></div>
             <div className="absolute w-5/6 h-5/6 rounded overflow-hidden">
@@ -105,6 +118,16 @@ const AboutMe = forwardRef<HTMLDivElement>((props, ref) => {
                 alt="Biswajit Dash Portfolio Image"
               />
             </div>
+          </div>
+
+          {/* Image Section for mobile (100% width) */}
+          {/* Simple Image Section for mobile */}
+          <div className="w-full h-96 block md:hidden">
+            <Img
+              src="/img/Portfolio-portrait-3Copy.jpg"
+              className="w-full h-full object-contain rounded-lg"
+              alt="Biswajit Dash Portfolio Image"
+            />
           </div>
         </div>
       </div>
