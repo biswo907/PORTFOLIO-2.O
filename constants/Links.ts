@@ -5,6 +5,9 @@ const LINKS = {
     EMAIL: "biswajitdash907@gmail.com",
     YOUTUBE: "https://www.youtube.com", 
     INSTAGRAM: "https://www.instagram.com/itzbiswo",
+    PROJECT_CRYPTO_Tracker:"https://crypto-price-tracking-biswo.netlify.app/",
+    PROJECT_TODO:"https://biswo-todoapp.netlify.app/",
+    PROJECT_CURRENCY_CONVERTER:"https://currency-converter-biswo.netlify.app/",
   };
   
   export default LINKS;

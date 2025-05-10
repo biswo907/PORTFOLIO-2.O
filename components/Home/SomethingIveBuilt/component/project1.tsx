@@ -2,6 +2,7 @@ import React from "react";
 import ExternalLink from "../../../Icons/ExternalLink";
 import { useRouter } from "next/router";
 import Img from "../../../smallComp/image/Img";
+import LINKS from "../../../../constants/Links";
 
 const Project1 = () => {
   const router = useRouter();
@@ -16,7 +17,11 @@ const Project1 = () => {
               absolute md:grid grid-cols-12 w-full h-full  content-center "
       >
         <div className="relative rounded w-full h-full col-start-6 col-span-7 ">
-          <a href={"https://www.vision.io"} target="_blank" rel="noreferrer">
+          <a
+            href={LINKS?.PROJECT_CRYPTO_Tracker}
+            target="_blank"
+            rel="noreferrer"
+          >
             <div
               className="absolute w-full h-full rounded bg-AAprimary 
                transition-opacity opacity-50 hover:opacity-0 hover:cursor-pointer duration-300"
@@ -52,7 +57,7 @@ const Project1 = () => {
           <div className="flex flex-col space-y-1  z-10">
             <span className="text-AAsecondary text-base">Crypto.io</span>
             <a
-              href="https://crypto-price-tracking-biswo.netlify.app/"
+              href={LINKS?.PROJECT_CRYPTO_Tracker}
               target="_blank"
               rel="noopener noreferrer"
             >

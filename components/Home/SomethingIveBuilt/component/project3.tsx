@@ -2,6 +2,7 @@ import React from "react";
 import Img from "../../../smallComp/image/Img";
 import { useRouter } from "next/router";
 import ExternalLink from "../../../Icons/ExternalLink";
+import LINKS from "../../../../constants/Links";
 
 const Project3 = () => {
   const router = useRouter();
@@ -16,11 +17,7 @@ const Project3 = () => {
           absolute md:grid grid-cols-12 w-full h-full  content-center "
       >
         <div className="relative rounded w-full h-full col-start-6 col-span-7 ">
-          <a
-            href={"https://biswo-todoapp.netlify.app/"}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={LINKS.PROJECT_TODO} target="_blank" rel="noreferrer">
             <div
               className="absolute w-full h-full rounded bg-AAprimary 
            transition-opacity opacity-50 hover:opacity-0 hover:cursor-pointer duration-300"
@@ -56,7 +53,7 @@ const Project3 = () => {
           <div className="flex flex-col space-y-1  z-10">
             <span className="text-AAsecondary text-base">To-Do.in</span>
             <a
-              href="https://www.fevertokens.io/"
+              href={LINKS.PROJECT_TODO}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -85,11 +82,7 @@ const Project3 = () => {
           </ul>
           <div className="z-10 flex fle-row space-x-5 ">
             {/* <GithubIcon link="https://github.com/hktitof/Ypredict" /> */}
-            <a
-              href="https://www.fevertokens.io/"
-              target={"_blank"}
-              rel="noreferrer"
-            >
+            <a href={LINKS.PROJECT_TODO} target={"_blank"} rel="noreferrer">
               <ExternalLink url={""} router={router} />
             </a>
           </div>

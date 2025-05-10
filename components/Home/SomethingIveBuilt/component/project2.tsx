@@ -3,6 +3,7 @@ import ExternalLink from "../../../Icons/ExternalLink";
 import GithubIcon from "../../../Icons/GithubIcon";
 import Img from "../../../smallComp/image/Img";
 import { useRouter } from "next/router";
+import LINKS from "../../../../constants/Links";
 
 const Project2 = () => {
   const router = useRouter();
@@ -25,7 +26,11 @@ const Project2 = () => {
           ></div>
         </Link> */}
 
-          <a href="project-link" target={"_blank"} rel="noreferrer">
+          <a
+            href={LINKS?.PROJECT_CURRENCY_CONVERTER}
+            target={"_blank"}
+            rel="noreferrer"
+          >
             <div
               // onClick={}
               className="absolute w-full h-full rounded bg-AAprimary 
@@ -63,7 +68,7 @@ const Project2 = () => {
           <div className="flex flex-col space-y-1 md:items-end z-10">
             <span className="text-AAsecondary text-base">Currency.in</span>
             <a
-              href="https://ubiquitous-bublanina-da84ec.netlify.app/"
+              href={LINKS?.PROJECT_CURRENCY_CONVERTER}
               target="_blank"
               rel="noopener noreferrer"
             >
