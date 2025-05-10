@@ -15,6 +15,7 @@ import "aos/dist/aos.css";
 import Head from "next/head";
 import ScreenSizeDetector from "../components/CustomComponents/ScreenSizeDetector";
 import Maintenance from "../components/Home/Maintenance/Maintenance";
+import Logo from "../components/Icons/Logo";
 export default function Home() {
   const [ShowElement, setShowElement] = useState(false);
   const [ShowThisCantBeReached, setShowThisCantBeReached] = useState(true);
@@ -126,8 +127,8 @@ export default function Home() {
 
   console.log("website is rendering...");
   const meta = {
-    title: "Abdellatif Anaflous - Software Engineer",
-    description: `I've been working on Software development for 5 years straight. Get in touch with me to know more.`,
+    title: "Biswajit Dash - Software Engineer",
+    description: `I've been working on Software development for 2 years straight. Get in touch with me to know more.`,
     image: "/titofCercle.png",
     type: "website"
   };
@@ -135,11 +136,11 @@ export default function Home() {
 
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>{meta.title}</title>
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        <meta property="og:url" content={`https://anaflous.com`} />
+        {/* <meta property="og:url" content={`https://anaflous.com`} />
         <link rel="canonical" href={`https://anaflous.com`} />
         <meta property="og:type" content={meta.type} />
         <meta property="og:site_name" content="Manu Arora" />
@@ -150,7 +151,16 @@ export default function Home() {
         <meta name="twitter:site" content="@titofabdo" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} />
+        <meta name="twitter:image" content={meta.image} /> */}
+      </Head>
+
+      {/* <Head>
+        <title>Biswo-Portfolio</title>
+        <meta
+          name="description"
+          content="Welcome to Biswo's personal portfolio website."
+        />
+        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
       </Head> */}
 
       {!isBlackListed ? (
