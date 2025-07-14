@@ -8,6 +8,7 @@ import ExternalLink from "../../Icons/ExternalLink";
 import Project1 from "./component/project1";
 import Project2 from "./component/project2";
 import Project3 from "./component/project3";
+import Project4 from "./component/project4";
 
 export default function SomethingIveBuilt() {
   const router = useRouter();
@@ -42,6 +43,7 @@ export default function SomethingIveBuilt() {
         <Project1 />
         <Project2 />
         <Project3 />
+        <Project4 />
       </div>
     </div>
   );

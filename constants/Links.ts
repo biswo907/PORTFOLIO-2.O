@@ -8,6 +8,7 @@ const LINKS = {
     PROJECT_CRYPTO_Tracker:"https://crypto-price-tracking-biswo.netlify.app/",
     PROJECT_TODO:"https://biswo-todoapp.netlify.app/",
     PROJECT_CURRENCY_CONVERTER:"https://currency-converter-biswo.netlify.app/",
+    PROJECT_AKSHIFY:"",
   };
   
   export default LINKS;
