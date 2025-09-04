@@ -1,24 +1,22 @@
-import Header from "../components/Header/Header";
-import Startup from "../components/Header/StartupLogo/Startup";
-import MyName from "../components/Home/MyName/MyName";
-import { useContext, useEffect, useState, useRef } from "react";
-import SocialMediaArround from "../components/Home/SocialMediaArround/SocialMediaArround";
-import AboutMe from "../components/Home/AboutMe/AboutMe";
-import ThisCantBeReached from "../components/Home/ThisSiteCantBeReached/ThisCantBeReached";
-import WhereIHaveWorked from "../components/Home/WhereIHaveWorked/WhereIHaveWorked";
-import SomethingIveBuilt from "../components/Home/SomethingIveBuilt/SomethingIveBuilt";
-import GetInTouch from "../components/Home/GetInTouch/GetInTouch";
-import Footer from "../components/Footer/Footer";
-import AppContext from "../components/AppContextFolder/AppContext";
-import Aos from "aos";
-import "aos/dist/aos.css";
-import Head from "next/head";
-import ScreenSizeDetector from "../components/CustomComponents/ScreenSizeDetector";
-import Maintenance from "../components/Home/Maintenance/Maintenance";
-import Logo from "../components/Icons/Logo";
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import Head from 'next/head';
+import { useContext, useEffect, useRef, useState } from 'react';
+import AppContext from '../components/AppContextFolder/AppContext';
+import ScreenSizeDetector from '../components/CustomComponents/ScreenSizeDetector';
+import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
+import Startup from '../components/Header/StartupLogo/Startup';
+import AboutMe from '../components/Home/AboutMe/AboutMe';
+import GetInTouch from '../components/Home/GetInTouch/GetInTouch';
+import Maintenance from '../components/Home/Maintenance/Maintenance';
+import MyName from '../components/Home/MyName/MyName';
+import SocialMediaArround from '../components/Home/SocialMediaArround/SocialMediaArround';
+import SomethingIveBuilt from '../components/Home/SomethingIveBuilt/SomethingIveBuilt';
+import WhereIHaveWorked from '../components/Home/WhereIHaveWorked/WhereIHaveWorked';
 export default function Home() {
-  const [ShowElement, setShowElement] = useState(false);
-  const [ShowThisCantBeReached, setShowThisCantBeReached] = useState(true);
+  const [ShowElement, setShowElement] = useState(true);
+  const [ShowThisCantBeReached, setShowThisCantBeReached] = useState(false);
   const [ShowMe, setShowMe] = useState(false);
   // context Variable to clearInterval
   const context = useContext(AppContext);
@@ -33,7 +31,7 @@ export default function Home() {
 
   // check if NEXT_PUBLC_BLACKLIST_COUNTRIES is empty
   const [IsBlackListEmpty, setIsBlackListEmpty] = useState(
-    process.env.NEXT_PUBLIC_BLACKLIST_COUNTRIES === "" ? true : false
+    process.env.NEXT_PUBLIC_BLACKLIST_COUNTRIES === '' ? true : false,
   );
 
   // this userEffect will be called to get the user location, so we can check if he is from the blackList,
@@ -43,18 +41,18 @@ export default function Home() {
       const fetchData = async () => {
         try {
           const IP_Address = async () => {
-            return fetch("https://api.ipify.org/?format=json")
+            return fetch('https://api.ipify.org/?format=json')
               .then((res) => res.json())
               .then((data) => data.ip);
           };
 
           const response = await fetch(
-            "/api/userInfoByIP/" + (await IP_Address())
+            '/api/userInfoByIP/' + (await IP_Address()),
           ); // Replace with your actual API endpoint
           const data = await response.json();
           setUserData(data);
         } catch (error) {
-          console.error("Error fetching data location and ip address:", error);
+          console.error('Error fetching data location and ip address:', error);
           // Handle errors as needed
         }
       };
@@ -71,7 +69,7 @@ export default function Home() {
         // check if the user country is in the blackList
         if (
           process.env.NEXT_PUBLIC_BLACKLIST_COUNTRIES?.includes(
-            userData.country
+            userData.country,
           )
         ) {
           // set isBlackListed to true
@@ -84,29 +82,29 @@ export default function Home() {
   useEffect(() => {
     // remove the interval Cookie timer setter when
     clearInterval(context.sharedState.userdata.timerCookieRef.current);
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       // remove UserDataPuller project EventListeners
       window.removeEventListener(
-        "resize",
-        context.sharedState.userdata.windowSizeTracker.current
+        'resize',
+        context.sharedState.userdata.windowSizeTracker.current,
       );
       window.removeEventListener(
-        "mousemove",
+        'mousemove',
         context.sharedState.userdata.mousePositionTracker.current,
-        false
+        false,
       );
       // remove Typing project EventListeners
       window.removeEventListener(
-        "resize",
-        context.sharedState.typing.eventInputLostFocus
+        'resize',
+        context.sharedState.typing.eventInputLostFocus,
       );
       document.removeEventListener(
-        "keydown",
-        context.sharedState.typing.keyboardEvent
+        'keydown',
+        context.sharedState.typing.keyboardEvent,
       );
     }
     setTimeout(() => {
-      setShowElement(true);
+      setShowElement(false);
     }, 4500);
 
     setTimeout(() => {
@@ -125,14 +123,14 @@ export default function Home() {
     Aos.init({ duration: 2000, once: true });
   }, []);
 
-  console.log("website is rendering...");
+  console.log('website is rendering...');
   const meta = {
-    title: "Biswajit Dash - Software Engineer",
+    title: 'Biswajit Dash - Software Engineer',
     description: `I've been working on Software development for 2 years straight. Get in touch with me to know more.`,
-    image: "/titofCercle.png",
-    type: "website"
+    image: '/titofCercle.png',
+    type: 'website',
   };
-  const isProd = process.env.NODE_ENV === "production";
+  const isProd = process.env.NODE_ENV === 'production';
 
   return (
     <>
@@ -165,45 +163,40 @@ export default function Home() {
 
       {!isBlackListed ? (
         <div className="relative snap-mandatory min-h-screen bg-AAprimary w-full ">
-          {context.sharedState.finishedLoading ? (
-            <></>
-          ) : ShowThisCantBeReached ? (
-            <ThisCantBeReached />
-          ) : (
-            <></>
-          )}
-          {context.sharedState.finishedLoading ? (
-            <></>
-          ) : ShowElement ? (
+          {ShowElement ? (
             <Startup />
           ) : (
-            <></>
-          )}
-          <Header
-            finishedLoading={context.sharedState.finishedLoading}
-            sectionsRef={homeRef}
-          />
-          <MyName finishedLoading={context.sharedState.finishedLoading} />
-          <SocialMediaArround
-            finishedLoading={context.sharedState.finishedLoading}
-          />
-          {context.sharedState.finishedLoading ? (
+            <>
+              <Header finishedLoading={true} sectionsRef={homeRef} />
+              <MyName finishedLoading={true} />
+              <SocialMediaArround finishedLoading={true} />
+              {/* {context.sharedState.finishedLoading ? (
             <AboutMe ref={aboutRef} />
-          ) : (
-            <></>
-          )}
-          {context.sharedState.finishedLoading ? <WhereIHaveWorked /> : <></>}
+            ) : (
+              <></>
+              )} */}
+              <AboutMe ref={aboutRef} />
+              {/* {context.sharedState.finishedLoading ? <WhereIHaveWorked /> : <></>}
           {context.sharedState.finishedLoading ? <SomethingIveBuilt /> : <></>}
           {context.sharedState.finishedLoading ? <GetInTouch /> : <></>}
           {context.sharedState.finishedLoading ? (
             <Footer
-              githubUrl={"https://github.com/biswo907"}
+              githubUrl={'https://github.com/biswo907'}
               hideSocialsInDesktop={true}
             />
           ) : (
             <></>
+          )} */}
+              <WhereIHaveWorked />
+              <SomethingIveBuilt />
+              <GetInTouch />
+              <Footer
+                githubUrl={'https://github.com/biswo907'}
+                hideSocialsInDesktop={true}
+              />
+              {!isProd && <ScreenSizeDetector />}
+            </>
           )}
-          {!isProd && <ScreenSizeDetector />}
         </div>
       ) : (
         <Maintenance />
