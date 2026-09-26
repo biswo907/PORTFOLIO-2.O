@@ -84,7 +84,7 @@ export default function SocialMediaEmail(props: { finishedLoading: boolean }) {
             className=""
           >
             <a
-              href="mailto:abdellatif@anaflous.com"
+              href="mailto:biswajitdash907@gmail.com"
               target={"_blank"}
               rel="noreferrer"
             >

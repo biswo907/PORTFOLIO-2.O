@@ -10,103 +10,95 @@ const Project2 = () => {
   return (
     <div
       data-aos="fade-up"
-      className="relative md:grid md:grid-cols-12 w-full md:h-96 "
+      className="relative md:grid md:grid-cols-12 w-full md:h-96 items-center group"
     >
-      {/* Left image */}
+      {/* Image for Desktop */}
       <div
-        className="hidden bg-AAprimary z-10  py-4 
-    absolute md:grid grid-cols-12 w-full h-full  content-center"
+        className="hidden bg-AAprimary z-10 py-4 
+    absolute md:grid grid-cols-12 w-full h-full content-center"
       >
-        <div className="relative rounded w-full h-full col-span-7 ">
-          {/* <Link href={"/typing"}>
-          <div
-            // onClick={}
-            className="absolute w-full h-full rounded bg-AAsecondary 
-     transition-opacity opacity-20 hover:opacity-0 hover:cursor-pointer duration-300"
-          ></div>
-        </Link> */}
-
+        <div className="relative rounded-xl w-full h-full col-span-7 overflow-hidden border border-AAsecondary/20 shadow-2xl group-hover:border-AAsecondary/50 transition-all duration-500">
           <a
-            href={LINKS?.PROJECT_CURRENCY_CONVERTER}
+            href={LINKS?.PROJECT_QUICKREVIEW}
             target={"_blank"}
             rel="noreferrer"
           >
             <div
-              // onClick={}
-              className="absolute w-full h-full rounded bg-AAprimary 
-     transition-opacity opacity-30 hover:opacity-0 hover:cursor-pointer duration-300"
+              className="absolute w-full h-full rounded-xl bg-gradient-to-l from-AAprimary/60 to-transparent 
+      transition-opacity opacity-40 group-hover:opacity-0 hover:cursor-pointer duration-500 z-10"
             ></div>
           </a>
 
           <Img
-            src={"/currency_Converter.png"}
-            alt={"Project Screen shot"}
-            className={`w-full rounded h-full `}
+            src={"/quickreview_showcase.jpg"}
+            alt={"QuickReview AI Platform Screenshot"}
+            className={`w-full rounded-xl h-full object-cover transition-transform duration-700 group-hover:scale-105`}
           />
         </div>
       </div>
 
-      {/* right Content */}
-      <div className=" md:absolute py-4  md:grid md:grid-cols-12 w-full h-full  content-center ">
-        {/* background for text in mobile responsive */}
-        <div className="absolute w-full h-full bg-opacity-70 z-0">
-          <div className="relative w-full h-full">
-            <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
-            <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
+      {/* Content Section */}
+      <div className="md:absolute py-4 md:grid md:grid-cols-12 w-full h-full content-center">
+        {/* Mobile View Card Background */}
+        <div className="absolute w-full h-full bg-AAtertiary/80 backdrop-blur-xl rounded-xl z-0 md:hidden border border-AAsecondary/20 shadow-2xl overflow-hidden">
+          <div className="relative w-full h-full opacity-20">
             <Img
-              src={"/currency_Converter.jpg"}
-              alt={"Project Screen shot"}
-              className={`w-full h-full `}
+              src={"/quickreview_showcase.jpg"}
+              alt={"QuickReview AI Screenshot"}
+              className={`w-full h-full object-cover`}
             />
           </div>
         </div>
 
         <div
-          className="px-8 pt-8 sm:pt-12 md:py-0 xl:col-span-6 xl:col-start-7 col-start-5 
-      col-span-8 flex flex-col items-start md:items-end space-y-3"
+          className="px-6 py-6 sm:px-8 sm:py-8 md:py-0 xl:col-span-6 xl:col-start-7 col-start-5 
+      col-span-8 flex flex-col items-start md:items-end space-y-3 relative z-10"
         >
           <div className="flex flex-col space-y-1 md:items-end z-10">
-            <span className="text-AAsecondary text-base">Currency.in</span>
+            <span className="text-AAsecondary text-xs font-mono tracking-widest uppercase font-semibold">
+              Featured AI Web Platform
+            </span>
             <a
-              href={LINKS?.PROJECT_CURRENCY_CONVERTER}
+              href={LINKS?.PROJECT_QUICKREVIEW}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className=" md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
-                Currency Converter
+              <span className="text-gray-100 text-xl sm:text-2xl font-bold tracking-wide hover:text-AAsecondary transition-colors duration-300">
+                QuickReview AI — Review Platform
               </span>
             </a>
           </div>
-          <div className="w-full md:bg-AAtertiary rounded-md py-6 md:p-6  z-10">
-            <p className="text-gray-300 md:text-gray-400 text-left md:text-left ">
-              Built a dynamic currency converter using{" "}
-              <span className="text-AAsecondary">React</span> and{" "}
-              <span className="text-AAsecondary">TanStack Query</span>,
-              integrated with the{" "}
-              <span className="text-AAsecondary">Frankfurter API</span> for
-              real-time exchange rates. Optimized data fetching, caching, and
-              synchronization for a seamless user experience.
+
+          <div className="w-full bg-AAtertiary/90 backdrop-blur-md rounded-lg py-5 px-5 md:p-6 z-10 border border-gray-800/80 shadow-2xl">
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-Header text-left md:text-right">
+              AI-powered review platform enabling businesses to generate branded <span className="text-AAsecondary font-semibold">QR codes</span> linked directly to Google Review pages. Integrates <span className="text-AAsecondary font-semibold">LLM APIs</span> to draft personalized, context-aware customer review suggestions based on shop category.
             </p>
           </div>
-          <ul
-            className="flex flex-wrap w-full text-gray-300 md:text-gray-400
-         text-sm font-Text2 md:justify-end"
-          >
-            <span className="pr-4 z-10">React</span>
-            <span className="pr-4 z-10">Tanstack Query</span>
-            <span className="pr-4 z-10">Frankfurter-API</span>
-          </ul>
-          <div className="z-10 flex fle-row space-x-5 ">
-            <div className="z-10 flex fle-row space-x-5 ">
-              <GithubIcon link="https://github.com/hktitof/Ypredict" />
-              <a
-                href="https://ubiquitous-bublanina-da84ec.netlify.app/"
-                target={"_blank"}
-                rel="noreferrer"
+
+          {/* Tech Badges */}
+          <div className="flex flex-wrap gap-2 pt-1 z-10 md:justify-end">
+            {["React.js", "TypeScript", "LLM APIs (AI)", "Vite", "TanStack Query"].map((tech, idx) => (
+              <span
+                key={idx}
+                className="bg-AAprimary/80 border border-AAsecondary/30 text-AAsecondary text-[11px] font-mono px-2.5 py-1 rounded-md shadow-sm"
               >
-                <ExternalLink url={""} router={router} />
-              </a>
-            </div>
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          {/* Actions */}
+          <div className="z-10 flex flex-row items-center space-x-5 pt-3">
+            <GithubIcon link={LINKS?.PROJECT_QUICKREVIEW || "https://github.com/biswo907"} />
+            <a
+              href={LINKS?.PROJECT_QUICKREVIEW}
+              target={"_blank"}
+              rel="noreferrer"
+              className="flex items-center space-x-1.5 text-xs font-mono text-AAsecondary hover:underline"
+            >
+              <span>Explore AI Platform</span>
+              <ExternalLink url={""} router={router} />
+            </a>
           </div>
         </div>
       </div>

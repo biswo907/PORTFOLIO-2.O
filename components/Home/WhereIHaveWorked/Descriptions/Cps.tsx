@@ -2,19 +2,19 @@ import React from "react";
 import ArrowIcon from "../../../Icons/ArrowIcon";
 import { getTasksTextWithHighlightedKeyword } from "./taskAndType";
 
-export default function Pairalabs() {
+export default function Cps() {
   const tasks = [
     {
-      text: "Built SEO-optimized web applications using React.js, Next.js, Remix.js, and TypeScript.",
-      keywords: ["SEO-optimized", "React.js", "Next.js", "Remix.js", "TypeScript"]
+      text: "Leading development of a multi-vendor marketplace platform with dedicated Admin, Vendor, and Customer applications.",
+      keywords: ["multi-vendor marketplace", "Admin", "Vendor", "Customer applications"]
     },
     {
-      text: "Developed responsive user interfaces and integrated REST APIs across multiple client projects.",
-      keywords: ["responsive user interfaces", "REST APIs", "client projects"]
+      text: "Built scalable onboarding, booking, pricing, payment, and location-based service workflows.",
+      keywords: ["onboarding", "booking", "pricing", "payment", "location-based service"]
     },
     {
-      text: "Improved application performance, web accessibility (a11y), and overall user experience.",
-      keywords: ["performance", "accessibility", "user experience"]
+      text: "Managed Expo EAS deployments, Play Store releases, and application performance optimization.",
+      keywords: ["Expo EAS", "Play Store releases", "performance optimization"]
     }
   ];
 
@@ -23,12 +23,12 @@ export default function Pairalabs() {
       <div className="flex flex-col space-y-2">
         {/* Title */}
         <span className="text-gray-100 sm:text-lg text-sm font-Arimo tracking-wide font-semibold">
-          Frontend Developer{" "}
-          <span className="text-AAsecondary">@ PairaLabs Pvt. Ltd.</span>
+          React Native Developer{" "}
+          <span className="text-AAsecondary">@ CPS Pvt. Ltd.</span>
         </span>
         {/* Date */}
         <span className="font-mono text-xs text-gray-500">
-          Apr 2023 – Oct 2024 | Bhubaneswar, Odisha
+          Sep 2025 – Present | Bhubaneswar, Odisha
         </span>
       </div>
       <div className="flex flex-col space-y-4 sm:text-sm text-xs">

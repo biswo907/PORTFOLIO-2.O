@@ -21,24 +21,24 @@ const Startup = (props) => {
     <motion.div
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
-      transition={{ opacity: { delay: 4.9, duration: 0 } }}
-      className="absolute h-full w-full flex justify-center items-center bg-StartupBackground"
+      transition={{ opacity: { delay: 2.3, duration: 0.4 } }}
+      className="fixed inset-0 h-full w-full flex justify-center items-center bg-StartupBackground z-50 pointer-events-none"
     >
       <motion.div
         initial={{ opacity: 0, x: 0, y: 0, scale: "100%" }}
         animate={{
-          opacity: [1, 0, 1],
+          opacity: [1, 0.8, 1],
           x: -WidthBy2,
           y: -HeightBy2,
           scale: greaterThanSmall ? "57%" : "50%",
         }}
         transition={{
-          opacity: { delay: 3, duration: 1.5 },
-          x: { duration: 0.5, delay: 4.5 },
-          y: { duration: 0.5, delay: 4.5 },
-          scale: { duration: 0.5, delay: 4.5 },
+          opacity: { delay: 1.5, duration: 0.6 },
+          x: { duration: 0.4, delay: 2.0 },
+          y: { duration: 0.4, delay: 2.0 },
+          scale: { duration: 0.4, delay: 2.0 },
         }}
-        className="relative  h-24 w-24 flex justify-center items-center"
+        className="relative h-24 w-24 flex justify-center items-center"
       >
         <motion.div
           initial={{ scale: 0, x: 0 }}

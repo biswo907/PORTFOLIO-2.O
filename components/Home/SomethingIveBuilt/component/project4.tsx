@@ -11,77 +11,79 @@ const Project4 = () => {
   return (
     <div
       data-aos="fade-up"
-      className="relative md:grid md:grid-cols-12 w-full md:h-96"
+      className="relative md:grid md:grid-cols-12 w-full md:h-96 items-center group"
     >
-      {/* Left Image Section */}
+      {/* Image for Desktop */}
       <div className="hidden bg-AAprimary z-10 py-4 absolute md:grid grid-cols-12 w-full h-full content-center">
-        <div className="relative rounded w-full h-full col-span-7">
+        <div className="relative rounded-xl w-full h-full col-span-7 overflow-hidden border border-AAsecondary/20 shadow-2xl group-hover:border-AAsecondary/50 transition-all duration-500">
           <a href={LINKS?.PROJECT_AKSHIFY} target="_blank" rel="noreferrer">
-            <div className="absolute w-full h-full rounded bg-AAprimary transition-opacity opacity-30 hover:opacity-0 hover:cursor-pointer duration-300"></div>
+            <div className="absolute w-full h-full rounded-xl bg-gradient-to-l from-AAprimary/60 to-transparent transition-opacity opacity-40 group-hover:opacity-0 hover:cursor-pointer duration-500 z-10"></div>
           </a>
           <Img
             src="/akshify_cover.png"
             alt="Akshify Screenshot"
-            className="w-full rounded h-full"
+            className="w-full rounded-xl h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         </div>
       </div>
 
-      {/* Right Content Section */}
+      {/* Content Section */}
       <div className="md:absolute py-4 md:grid md:grid-cols-12 w-full h-full content-center">
-        {/* Background image on mobile */}
-        <div className="absolute w-full h-full bg-opacity-70 z-0">
-          <div className="relative w-full h-full">
-            <div className="absolute w-full h-full bg-AAsecondary opacity-10 z-10"></div>
-            <div className="absolute w-full h-full bg-AAprimary opacity-80 z-10"></div>
+        {/* Mobile View Card Background */}
+        <div className="absolute w-full h-full bg-AAtertiary/80 backdrop-blur-xl rounded-xl z-0 md:hidden border border-AAsecondary/20 shadow-2xl overflow-hidden">
+          <div className="relative w-full h-full opacity-20">
             <Img
               src="/akshify_cover.png"
               alt="Akshify Screenshot"
-              className="w-full h-full"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
 
-        <div className="px-8 pt-8 sm:pt-12 md:py-0 xl:col-span-6 xl:col-start-7 col-start-5 col-span-8 flex flex-col items-start md:items-end space-y-3">
-          {/* Title */}
+        <div className="px-6 py-6 sm:px-8 sm:py-8 md:py-0 xl:col-span-6 xl:col-start-7 col-start-5 col-span-8 flex flex-col items-start md:items-end space-y-3 relative z-10">
           <div className="flex flex-col space-y-1 md:items-end z-10">
-            <span className="text-AAsecondary text-base">Akshify.in</span>
+            <span className="text-AAsecondary text-xs font-mono tracking-widest uppercase font-semibold">
+              Full Stack Task Management
+            </span>
             <a
               href={LINKS?.PROJECT_AKSHIFY}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span className="md:text-gray-200 text-AAsecondary font-bold text-xl hover:cursor-pointer">
-                Akshify Task Manager
+              <span className="text-gray-100 text-xl sm:text-2xl font-bold tracking-wide hover:text-AAsecondary transition-colors duration-300">
+                Akshify — Role-Based Task Engine
               </span>
             </a>
           </div>
 
-          {/* Description */}
-          <div className="w-full md:bg-AAtertiary rounded-md py-6 md:p-6 z-10">
-            <p className="text-gray-300 md:text-gray-400 text-left md:text-left">
-              Akshify is a role-based task management platform built using{" "}
-              <span className="text-AAsecondary">React Native</span>,{" "}
-              <span className="text-AAsecondary">Node.js</span>, and{" "}
-              <span className="text-AAsecondary">MongoDB</span>. Companies can
-              create employee accounts, assign tasks with visibility rules, and
-              track status in real time. JWT authentication, user roles, and
-              profile controls ensure a secure and modern experience.
+          <div className="w-full bg-AAtertiary/90 backdrop-blur-md rounded-lg py-5 px-5 md:p-6 z-10 border border-gray-800/80 shadow-2xl">
+            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed font-Header text-left md:text-right">
+              Role-based task management platform built using <span className="text-AAsecondary font-semibold">React Native</span>, <span className="text-AAsecondary font-semibold">Node.js</span>, and <span className="text-AAsecondary font-semibold">MongoDB</span>. Enables companies to create employee accounts, assign tasks with visibility rules, and track status with JWT authentication.
             </p>
           </div>
 
-          {/* Tech Stack */}
-          <ul className="flex flex-wrap w-full text-gray-300 md:text-gray-400 text-sm font-Text2 md:justify-end">
-            <span className="pr-4 z-10">React Native</span>
-            <span className="pr-4 z-10">Node.js</span>
-            <span className="pr-4 z-10">MongoDB</span>
-            <span className="pr-4 z-10">JWT</span>
-          </ul>
+          {/* Tech Badges */}
+          <div className="flex flex-wrap gap-2 pt-1 z-10 md:justify-end">
+            {["React Native", "Node.js", "Express.js", "MongoDB", "JWT Auth"].map((tech, idx) => (
+              <span
+                key={idx}
+                className="bg-AAprimary/80 border border-AAsecondary/30 text-AAsecondary text-[11px] font-mono px-2.5 py-1 rounded-md shadow-sm"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
 
-          {/* Links */}
-          <div className="z-10 flex flex-row space-x-5">
-            <GithubIcon link="https://github.com/your-github-akshify" />
-            <a href={LINKS?.PROJECT_AKSHIFY} target="_blank" rel="noreferrer">
+          {/* Actions */}
+          <div className="z-10 flex flex-row items-center space-x-5 pt-3">
+            <GithubIcon link={LINKS?.PROJECT_AKSHIFY || "https://github.com/biswo907"} />
+            <a
+              href={LINKS?.PROJECT_AKSHIFY}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center space-x-1.5 text-xs font-mono text-AAsecondary hover:underline"
+            >
+              <span>Explore Platform</span>
               <ExternalLink url="" router={router} />
             </a>
           </div>

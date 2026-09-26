@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useContext, useEffect, useRef, useState } from 'react';
 import AppContext from '../components/AppContextFolder/AppContext';
 import ScreenSizeDetector from '../components/CustomComponents/ScreenSizeDetector';
+import ThreeBackground from '../components/CustomComponents/ThreeBackground';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 import Startup from '../components/Header/StartupLogo/Startup';
@@ -14,28 +15,20 @@ import MyName from '../components/Home/MyName/MyName';
 import SocialMediaArround from '../components/Home/SocialMediaArround/SocialMediaArround';
 import SomethingIveBuilt from '../components/Home/SomethingIveBuilt/SomethingIveBuilt';
 import WhereIHaveWorked from '../components/Home/WhereIHaveWorked/WhereIHaveWorked';
+
 export default function Home() {
   const [ShowElement, setShowElement] = useState(true);
   const [ShowThisCantBeReached, setShowThisCantBeReached] = useState(false);
   const [ShowMe, setShowMe] = useState(false);
-  // context Variable to clearInterval
   const context = useContext(AppContext);
   const aboutRef = useRef<HTMLDivElement>(null);
   const homeRef = useRef<HTMLDivElement>(null);
-
-  // userData state that will be used to get usr location
   const [userData, setUserData] = useState(null);
-
-  // check if user from Black List
   const [isBlackListed, setIsBlackListed] = useState(false);
-
-  // check if NEXT_PUBLC_BLACKLIST_COUNTRIES is empty
   const [IsBlackListEmpty, setIsBlackListEmpty] = useState(
     process.env.NEXT_PUBLIC_BLACKLIST_COUNTRIES === '' ? true : false,
   );
 
-  // this userEffect will be called to get the user location, so we can check if he is from the blackList,
-  // this will only run if NEXT_PUBLIC_BLACKLIST_COUNTRIES is not empty
   useEffect(() => {
     if (!IsBlackListEmpty) {
       const fetchData = async () => {
@@ -48,31 +41,26 @@ export default function Home() {
 
           const response = await fetch(
             '/api/userInfoByIP/' + (await IP_Address()),
-          ); // Replace with your actual API endpoint
+          );
           const data = await response.json();
           setUserData(data);
         } catch (error) {
           console.error('Error fetching data location and ip address:', error);
-          // Handle errors as needed
         }
       };
 
       fetchData();
     }
-  }, [IsBlackListEmpty]); // Empty dependency array ensures that this effect runs once when the component mounts
+  }, [IsBlackListEmpty]);
 
-  // this useEffect will be called when userData is set
   useEffect(() => {
-    // this will only run if NEXT_PUBLIC_BLACKLIST_COUNTRIES is not empty
     if (!IsBlackListEmpty) {
       if (userData) {
-        // check if the user country is in the blackList
         if (
           process.env.NEXT_PUBLIC_BLACKLIST_COUNTRIES?.includes(
             userData.country,
           )
         ) {
-          // set isBlackListed to true
           setIsBlackListed(true);
         }
       }
@@ -80,10 +68,8 @@ export default function Home() {
   }, [IsBlackListEmpty, userData]);
 
   useEffect(() => {
-    // remove the interval Cookie timer setter when
     clearInterval(context.sharedState.userdata.timerCookieRef.current);
     if (typeof window !== 'undefined') {
-      // remove UserDataPuller project EventListeners
       window.removeEventListener(
         'resize',
         context.sharedState.userdata.windowSizeTracker.current,
@@ -93,7 +79,6 @@ export default function Home() {
         context.sharedState.userdata.mousePositionTracker.current,
         false,
       );
-      // remove Typing project EventListeners
       window.removeEventListener(
         'resize',
         context.sharedState.typing.eventInputLostFocus,
@@ -105,64 +90,105 @@ export default function Home() {
     }
     setTimeout(() => {
       setShowElement(false);
-    }, 4500);
+    }, 2500);
 
     setTimeout(() => {
       setShowThisCantBeReached(false);
-    }, 5400);
-    // ? INFORMATIONAL next function will show the component after changing the state of ShowMe
+    }, 2800);
+
     setTimeout(() => {
       setShowElement(false);
       setShowMe(true);
       context.sharedState.finishedLoading = true;
       context.setSharedState(context.sharedState);
-    }, 10400);
+    }, 2500);
   }, [context, context.sharedState]);
 
   useEffect(() => {
-    Aos.init({ duration: 2000, once: true });
+    Aos.init({ duration: 1200, once: true });
   }, []);
 
-  console.log('website is rendering...');
   const meta = {
-    title: 'Biswajit Dash - Software Engineer',
-    description: `I've been working on Software development for 2 years straight. Get in touch with me to know more.`,
-    image: '/titofCercle.png',
+    title: 'Biswajit Dash | React Native & Full Stack Mobile Developer',
+    description: `React Native Developer with 3+ years of experience building scalable mobile & web applications using React Native, Expo, Next.js, React.js, TypeScript, Node.js, AI (LLM) integrations, Socket.IO, and Mapbox.`,
+    url: 'https://portfolio-biswo.netlify.app/',
+    image: 'https://portfolio-biswo.netlify.app/wisbox_showcase.jpg',
     type: 'website',
   };
   const isProd = process.env.NODE_ENV === 'production';
+
+  const schemaData = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Biswajit Dash',
+    jobTitle: 'React Native & Mobile Developer',
+    url: meta.url,
+    sameAs: [
+      'https://github.com/biswo907',
+      'https://www.linkedin.com/in/biswajit-dash-129977221/',
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Bhubaneswar',
+      addressRegion: 'Odisha',
+      addressCountry: 'India',
+    },
+    knowsAbout: [
+      'React Native',
+      'Expo',
+      'React.js',
+      'Next.js',
+      'TypeScript',
+      'JavaScript',
+      'Node.js',
+      'Socket.IO',
+      'Mapbox',
+      'LLM APIs',
+      'AI Integration',
+      'Redux Toolkit',
+    ],
+  };
 
   return (
     <>
       <Head>
         <title>{meta.title}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="follow, index" />
         <meta content={meta.description} name="description" />
-        {/* <meta property="og:url" content={`https://anaflous.com`} />
-        <link rel="canonical" href={`https://anaflous.com`} />
+        <meta
+          name="keywords"
+          content="Biswajit Dash, React Native Developer, Mobile App Developer, Expo, React.js, Next.js, TypeScript, Node.js, Socket.IO, Mapbox, LLM API, AI Integration, Bhubaneswar Developer"
+        />
+        <link rel="canonical" href={meta.url} />
+        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+        <link rel="shortcut icon" href="/logo.svg" />
+        <link rel="apple-touch-icon" href="/logo.svg" />
+
+        {/* OpenGraph Tags */}
+        <meta property="og:url" content={meta.url} />
         <meta property="og:type" content={meta.type} />
-        <meta property="og:site_name" content="Manu Arora" />
+        <meta property="og:site_name" content="Biswajit Dash Portfolio" />
         <meta property="og:description" content={meta.description} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:image" content={meta.image} />
+
+        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@titofabdo" />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={meta.image} /> */}
+        <meta name="twitter:image" content={meta.image} />
+
+        {/* JSON-LD Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+        />
       </Head>
 
-      {/* <Head>
-        <title>Biswo-Portfolio</title>
-        <meta
-          name="description"
-          content="Welcome to Biswo's personal portfolio website."
-        />
-        <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-      </Head> */}
-
       {!isBlackListed ? (
-        <div className="relative snap-mandatory min-h-screen bg-AAprimary w-full ">
+        <div className="relative min-h-screen bg-AAprimary w-full overflow-x-hidden">
+          <ThreeBackground />
           {ShowElement ? (
             <Startup />
           ) : (
@@ -170,23 +196,7 @@ export default function Home() {
               <Header finishedLoading={true} sectionsRef={homeRef} />
               <MyName finishedLoading={true} />
               <SocialMediaArround finishedLoading={true} />
-              {/* {context.sharedState.finishedLoading ? (
-            <AboutMe ref={aboutRef} />
-            ) : (
-              <></>
-              )} */}
               <AboutMe ref={aboutRef} />
-              {/* {context.sharedState.finishedLoading ? <WhereIHaveWorked /> : <></>}
-          {context.sharedState.finishedLoading ? <SomethingIveBuilt /> : <></>}
-          {context.sharedState.finishedLoading ? <GetInTouch /> : <></>}
-          {context.sharedState.finishedLoading ? (
-            <Footer
-              githubUrl={'https://github.com/biswo907'}
-              hideSocialsInDesktop={true}
-            />
-          ) : (
-            <></>
-          )} */}
               <WhereIHaveWorked />
               <SomethingIveBuilt />
               <GetInTouch />

@@ -1,105 +1,88 @@
-import { motion } from "../../../node_modules/framer-motion/dist/framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-scroll";
-const MobileMenu = props => {
+
+const MobileMenu = (props: {
+  rotate: boolean;
+  setRotate: (val: boolean) => void;
+  setShowElement: (val: boolean) => void;
+  ShowElement: boolean;
+}) => {
   const closeMenu = () => {
-    props.setRotate(!props.rotate);
-    props.setShowElement(!props.ShowElement);
+    props.setRotate(false);
+    props.setShowElement(true);
   };
+
+  const navLinks = [
+    { number: "01.", name: "About", to: "aboutSection", offset: -80 },
+    { number: "02.", name: "Experience", to: "WhereIhaveWorkedSection", offset: -100 },
+    { number: "03.", name: "Work", to: "SomethingIveBuiltSection", offset: -80 },
+    { number: "04.", name: "Contact", to: "GetInTouchSection", offset: -80 },
+  ];
+
   return (
-    <>
-      <motion.div
-        initial={{ x: "100%" }}
-        animate={props.rotate ? { x: "0" } : { x: "100%" }}
-        transition={{ x: { duration: 0.4 } }}
-        className="w-full fixed h-screen flex md:hidden duration-300 z-20"
-      >
-        <div
-          onClick={() => closeMenu()}
-          className="w-1/4 h-full backdrop-blur-sm bg-MobileNavColor/30 hover:cursor-pointer"
-        ></div>
-        <div
-          className="w-3/4 h-full bg-MobileNavBarColor flex flex-col 
-        justify-center items-center space-y-8 font-sans"
-        >
-          <Link
-            to="aboutSection"
-            spy={true}
-            smooth={true}
-            offset={-50}
-            duration={200}
-            onClick={() => closeMenu()}
-            className="flex flex-col text-center space-y-2"
-          >
-            <span className="text-AAsecondary text-xs font-mono">01.</span>
-            <span
-              className="text-white font-Text2 text-sm sm:text-base
-             hover:text-AAsecondary hover:cursor-pointer duration-300"
-            >
-              About
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={props.rotate ? { opacity: 1 } : { opacity: 0, pointerEvents: "none" }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 z-50 flex md:hidden w-full h-screen"
+    >
+      {/* Blurred Backdrop Overlay */}
+      <div
+        onClick={closeMenu}
+        className="w-1/4 h-full bg-black/70 backdrop-blur-md cursor-pointer"
+      />
+
+      {/* Glassmorphic Side Drawer */}
+      <div className="w-3/4 h-full bg-AAprimary/95 backdrop-blur-2xl border-l border-AAsecondary/20 flex flex-col justify-between p-8 shadow-2xl relative z-50">
+        {/* Drawer Header */}
+        <div className="flex items-center justify-between pb-6 border-b border-gray-800">
+          <div className="flex items-center space-x-2">
+            <img src="/logo.svg" alt="Logo" className="w-7 h-7 object-contain" />
+            <span className="font-mono text-sm font-bold text-gray-100">
+              Biswajit<span className="text-AAsecondary"></span>
             </span>
-          </Link>
-          <Link
-            to="WhereIhaveWorkedSection"
-            spy={true}
-            smooth={true}
-            offset={-250}
-            duration={200}
-            onClick={() => closeMenu()}
-            className="flex flex-col text-center space-y-2"
+          </div>
+          <button
+            onClick={closeMenu}
+            className="text-gray-400 hover:text-AAsecondary p-1 font-mono text-xl"
           >
-            <span className="text-AAsecondary text-xs font-mono hover:cursor-pointer">02.</span>
-            <span
-              className="text-white font-Text2 text-sm sm:text-base
-             hover:text-AAsecondary hover:cursor-pointer duration-300"
+            ✕
+          </button>
+        </div>
+
+        {/* Navigation Items */}
+        <div className="flex flex-col space-y-6 my-auto">
+          {navLinks.map((item, idx) => (
+            <Link
+              key={idx}
+              to={item.to}
+              spy={true}
+              smooth={true}
+              offset={item.offset}
+              duration={300}
+              onClick={closeMenu}
+              className="flex items-center space-x-4 group p-2 rounded-lg hover:bg-AAsecondary/10 transition-all duration-300"
             >
-              Experience
-            </span>
-          </Link>
-          <Link
-            to="SomethingIveBuiltSection"
-            spy={true}
-            smooth={true}
-            offset={100}
-            duration={200}
-            onClick={() => closeMenu()}
-            className="flex flex-col text-center space-y-2"
-          >
-            <span className="text-AAsecondary text-xs font-mono">03.</span>
-            <span
-              className="text-white font-Text2 text-sm sm:text-base
-             hover:text-AAsecondary hover:cursor-pointer duration-300"
-            >
-              Work
-            </span>
-          </Link>
-          <Link
-            to="GetInTouchSection"
-            spy={true}
-            smooth={true}
-            offset={100}
-            duration={200}
-            onClick={() => closeMenu()}
-            className="flex flex-col text-center space-y-2"
-          >
-            <span className="text-AAsecondary text-xs font-mono">04.</span>
-            <span
-              className="text-white font-Text2 text-sm sm:text-base
-             hover:text-AAsecondary hover:cursor-pointer duration-300"
-            >
-              Contact
-            </span>
-          </Link>
-          <a href={"/resume.pdf"} target={"_blank"} rel="noreferrer">
-            <button
-              className="rounded border font-Text2  border-AAsecondary
-           hover:bg-ResumeButtonHover py-2 sm:py-4 px-5 sm:px-10 text-xs text-AAsecondary"
-            >
-              Resume
+              <span className="text-AAsecondary font-mono text-xs">{item.number}</span>
+              <span className="text-gray-200 group-hover:text-AAsecondary font-mono text-base font-semibold transition-colors">
+                {item.name}
+              </span>
+            </Link>
+          ))}
+        </div>
+
+        {/* Resume Button */}
+        <div className="pt-6 border-t border-gray-800">
+          <a href={"/resume.pdf"} target={"_blank"} rel="noreferrer" onClick={closeMenu}>
+            <button className="w-full text-center font-mono text-sm text-AAsecondary bg-AAsecondary/10 border border-AAsecondary/40 hover:bg-AAsecondary/20 py-3 rounded-lg font-semibold shadow-lg transition-all duration-300">
+              Check Resume
             </button>
           </a>
         </div>
-      </motion.div>
-    </>
+      </div>
+    </motion.div>
   );
 };
+
 export default MobileMenu;
